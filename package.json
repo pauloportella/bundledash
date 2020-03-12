@@ -4,7 +4,7 @@
     "description": "Keep watch of your bundle size",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/pauloportella/bundledashboard.git"
+        "url": "git+https://github.com/pauloportella/bundledash.git"
     },
     "main": "lib/app/index.js",
     "bin": {
