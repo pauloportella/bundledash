@@ -33,6 +33,10 @@ const main = async ({
         trackBranches: ci.trackBranches,
     })
 
+    await bundlewatchService.saveFileDetailsForCurrentCommit({
+        fileDetailsByPath: currentBranchFileDetails,
+    })
+
     const results = analyze({
         currentBranchFileDetails,
         baseBranchFileDetails,

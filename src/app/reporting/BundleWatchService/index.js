@@ -121,6 +121,47 @@ class bundlewatchService {
                 )
             })
     }
+
+    saveFileDetailsForCurrentCommit({ fileDetailsByPath }) {
+        if (!this.enabled || !this.repoCurrentBranch) {
+            return Promise.resolve()
+        }
+
+        if (
+            this.repoBranchBase &&
+            this.repoCurrentBranch !== this.repoBranchBase
+        ) {
+            logger.info(
+                `${this.repoBranchBase} !== ${this.repoCurrentBranch}, no results saved`,
+            )
+        }
+
+        logger.info(`Saving results`)
+
+        return axios
+            .post(
+                `${this.bundlewatchServiceStoreUrl}/save-commit`,
+                {
+                    repoOwner: this.repoOwner,
+                    repoName: this.repoName,
+                    repoBranch: this.repoCurrentBranch,
+                    githubAccessToken: this.githubAccessToken,
+                    commitSha: this.commitSha,
+                    fileDetailsByPath,
+                },
+                {
+                    timeout: 10000,
+                },
+            )
+            .catch(error => {
+                logger.debug(error)
+                logger.error(
+                    `Unable to save fileDetails for currentBranch=${
+                        this.repoCurrentBranch
+                    } code=${error.code || error.message}`,
+                )
+            })
+    }
 }
 
 export default bundlewatchService

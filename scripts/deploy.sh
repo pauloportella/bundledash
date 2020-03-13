@@ -17,10 +17,10 @@ fi
 echo "${version} appears to be a release tag"
 echo "Deploying...."
 
-echo '//registry.npmjs.org/:_authToken=${NPM_PUBLISH_TOKEN}' > .npmrc
+echo '//registry.npmjs.org/:_authToken=6d26e9b8-c535-4508-8392-a1836d84631c' > .npmrc
 
 PACKAGE_VERSION_JSON=package.json
-PACKAGE_VERSION_NPM=@pauloportella/bundledash
+PACKAGE_VERSION_NPM=bundledash
 
 jq ".version=\"$version\"" $PACKAGE_VERSION_JSON > $PACKAGE_VERSION_JSON.tmp
 mv $PACKAGE_VERSION_JSON.tmp $PACKAGE_VERSION_JSON
