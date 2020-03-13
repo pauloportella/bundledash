@@ -127,16 +127,7 @@ class bundlewatchService {
             return Promise.resolve()
         }
 
-        if (
-            this.repoBranchBase &&
-            this.repoCurrentBranch !== this.repoBranchBase
-        ) {
-            logger.info(
-                `${this.repoBranchBase} !== ${this.repoCurrentBranch}, no results saved`,
-            )
-        }
-
-        logger.info(`Saving results`)
+        logger.info(`Saving result for current commit.`)
 
         return axios
             .post(
@@ -150,7 +141,7 @@ class bundlewatchService {
                     fileDetailsByPath,
                 },
                 {
-                    timeout: 10000,
+                    timeout: 30000,
                 },
             )
             .catch(error => {

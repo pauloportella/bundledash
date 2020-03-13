@@ -28,13 +28,10 @@ const main = async ({
     })
 
     const baseBranchFileDetails = await bundlewatchService.getFileDetailsForBaseBranch()
+
     await bundlewatchService.saveFileDetailsForCurrentBranch({
         fileDetailsByPath: currentBranchFileDetails,
         trackBranches: ci.trackBranches,
-    })
-
-    await bundlewatchService.saveFileDetailsForCurrentCommit({
-        fileDetailsByPath: currentBranchFileDetails,
     })
 
     const results = analyze({
@@ -51,6 +48,10 @@ const main = async ({
         repoCurrentBranch: ci.repoCurrentBranch,
         repoBranchBase: ci.repoBranchBase,
         commitSha: ci.commitSha,
+    })
+
+    await bundlewatchService.saveFileDetailsForCurrentCommit({
+        fileDetailsByPath: currentBranchFileDetails,
     })
 
     return {
