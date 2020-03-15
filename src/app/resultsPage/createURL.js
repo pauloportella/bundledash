@@ -26,7 +26,7 @@ const createURL = async ({
             repoBranchBase,
             commitSha,
         },
-        results: strippedResultsForURL,
+        // results: strippedResultsForURL,
     })
     const urlResultData = encodeURIComponent(packedJSON)
     const longURL = `${bundlewatchServiceHost}/results?d=${urlResultData}`

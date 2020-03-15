@@ -76,7 +76,7 @@ const bundlewatchApi = async customConfig => {
         commitSha: config.ci.commitSha,
         githubAccessToken: config.ci.githubAccessToken,
     })
-    await githubService.start({ message: 'Checking bundlewatch...' })
+    await githubService.start({ message: 'Checking bundledash...' })
 
     try {
         const results = await main(config)

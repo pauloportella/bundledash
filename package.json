@@ -1,6 +1,6 @@
 {
     "name": "bundledash",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Keep watch of your bundle size",
     "repository": {
         "type": "git",
